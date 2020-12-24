@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        //Assigment #4//
+        /// Írasd ki egy tetszőleges elemszámú, csak egész számokat tartalmazó tömb összegét!
+
+        const numericArray = [10, 233, 823, 522, 122, 4, 11];
+
+        const getSum = numArray => numArray.reduce((prev, current) => prev + current, 0);
+
+        console.log('Original numeric array elements: ', ...numericArray);
+        console.log('Sum of elements: ', getSum(numericArray));
+
+    </script>
+
+</body>
+
+</html>

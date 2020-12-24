@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        //Assigment #7//
+        //Írasd ki egy tetszőleges elemszámú, csak egész számokat tartalmazó tömb harmadik legnagyobb elemét!
+
+        const numericArray = [12, 13, 41, 55, 60, 33, 3, 0, 34, 11, 3, 3, 11];
+
+        const getThirdHighestValue = array => {
+            let sortedSet = new Set(array.sort((a, b) => b - a));
+            return [...sortedSet][2];
+        }
+
+        console.log('Original numeric array elements: ', ...numericArray);
+        console.log('Third highest value: ', getThirdHighestValue(numericArray));
+
+    </script>
+
+</body>
+
+</html>

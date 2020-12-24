@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        //Assigment #3//
+        ///Írasd ki egy tetszőleges elemszámú, csak egész számokat tartalmazó tömb átlagát!
+
+        const numericArray = [10, 234, 234, 5200, 123, 4, 12];
+
+        const getAverage = numArray => numArray.reduce((prev, current) => prev + current, 0) / numArray.length;
+
+        console.log('Original numeric array elements: ', ...numericArray);
+        console.log('Average value: ', getAverage(numericArray));
+
+    </script>
+
+</body>
+
+</html>

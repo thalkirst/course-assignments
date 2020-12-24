@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        //Assignment #1//
+        //Írasd ki egy tetszőleges elemszámú, csak egész számokat tartalmazó tömb legkisebb elemét!
+
+        const numericArray = [15, 23, 345, 452345, 5, 452, 2345, 11, 12];
+
+        // traditional for loop //
+
+        const getLowestElement = numArray => {
+            let minValue = numArray[0];
+            for (let i = 1; i < numArray.length; i += 1) {
+                if (minValue > numArray[i]) {
+                    minValue = numArray[i];
+                }    
+            }
+            return minValue;
+        }
+    
+        console.log('Original numeric array elements: ', ...numericArray);
+        console.log('Lowest value - For loop result: ', getLowestElement(numericArray));
+
+        // Easiest //
+
+        console.log('Lowest value - Math.min result: ', Math.min(...numericArray));
+
+    </script>
+
+</body>
+
+</html>

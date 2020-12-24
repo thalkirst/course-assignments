@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        /* 3. Feladat
+        Írj egy olyan függvénykifejezést, ami paraméterként egy stringeket tartalmazó tömböt kap  (Input ellenőrzést nem kell végezni.), és visszaad egy html template-et (string)! A html template egy felsorolt lista, aminek a listaelemei a kapott tömb értékeit tartalmazzák.
+        Pl.:
+        
+        // ha ez a tömb
+        const content = ['első', 'második', 'harmadik'];
+        
+        // akkor ez legyen a visszatérési érték:
+        <ul>
+            <li>első</li>
+            <li>második</li>
+            <li>harmadik</li>
+        </ul>
+         */
+
+        const listBuilder = array => {
+            let htmlList = '<ul>';
+            array.forEach(element => htmlList = htmlList + '<li>' + element + '</li>');
+            htmlList = htmlList + '</ul>';
+            return htmlList;
+        }
+
+        const listContent = ['első', 'második', 'harmadik'];
+        console.log(listBuilder(listContent));
+
+    </script>
+</body>
+
+</html>

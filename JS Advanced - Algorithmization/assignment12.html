@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        // Assignment #12
+        // Rendezd a javított buborékos rendezés algoritmus (nézz utána mi az, ha nem ismered) segítségével egy tetszőleges elemszámú, beágyazott tömb, és objektum kivételével bármilyen típusú elemeket tartalmazó tömb elemeit csökkenő sorrendbe! A nem szám típusú elemeket rakd a tömb végére az eredeti sorrendbe. Írasd ki a rendezett tömböt!
+
+        const mixedArray = [101, 10.4, NaN, 23, 25, null, 2352, 123, 'John', 122, true, false];
+
+        const sortItemsDescending = array => {
+            let swapped = true;
+            do {
+                swapped = false;
+                for (let i = 0; i < array.length; i += 1) {
+                    if (array[i] < array[i + 1]) {
+                        let temp = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = temp;
+                        swapped = true;
+                    }
+                }
+            } while (swapped);
+            return array;
+        }
+
+        const arraySorter = array => {
+            let numArray = [];
+            let notNumArray = [];
+            for (let i = 0; i < array.length; i += 1) {
+                Number.isFinite(array[i]) === true ? numArray.push(array[i]) : notNumArray.push(array[i]);
+            }
+            sortItemsDescending(numArray);
+            let fullArray = numArray.concat(notNumArray);
+            return fullArray;
+
+        }
+
+        console.log('Original array elements: ', ...mixedArray);
+        console.log('Numbers sorted in descending order and grouped in array: ', ...(arraySorter(mixedArray)));
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        //Assigment #2//
+        //Írasd ki egy tetszőleges elemszámú, csak egész számokat tartalmazó tömb legnagyobb elemét!//
+
+        const numericArray = [23, 345, 11110, 452, 13, 452, 2345, 11, 1234];
+
+        // traditional for loop //
+
+        const getHighestElement = numArray => {
+            let maxValue = numArray[0];
+            for (let i = 1; i < numArray.length; i += 1) {
+                if (maxValue < numArray[i]) {
+                    maxValue = numArray[i];
+                }
+            }
+            return maxValue;
+        }
+        console.log('Original numeric array elements: ', ...numericArray);
+        console.log('Highest value - For loop result: ', getHighestElement(numericArray));
+
+        // Easiest //
+
+        console.log('Highest value - Math.max result: ', Math.max(...numericArray));
+
+    </script>
+
+</body>
+
+</html>

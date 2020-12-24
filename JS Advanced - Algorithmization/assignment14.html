@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        //Assignment #14
+        // Adott egy tömb, mely azonos darabú egész számot, és szöveget tartalmaz véletlenszerű sorrendben. Rendezzük úgy a tömböt, hogy minden szám után egy string következzen! Írasd ki a rendezett tömböt!
+
+        let mixedArray = ['big', 'small', 332, 12, 'next', 7];
+
+        const arraySorter = array => {
+            let numArray = [];
+            let notNumArray = [];
+            let sortedArray = [];
+            for (let i = 0; i < array.length; i += 1) {
+                Number.isFinite(array[i]) === true ? numArray.push(array[i]) : notNumArray.push(array[i]);
+            }
+            for (let i = 0; (i < array.length / 2); i += 1) {
+                sortedArray.push(numArray[i], notNumArray[i]);
+            }
+            return sortedArray;
+        }
+
+
+        console.log('Original array elements: ', ...mixedArray);
+        console.log('Numbers and strings arranged in array: ', ...(arraySorter(mixedArray)));
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        //Assignment #5//
+        //Írasd ki egy tetszőleges elemszámú, csak egész számokat tartalmazó tömb páros elemeinek a számát!
+
+        const numericArray = [10, 2, 235, 223, 25, 122, 4, 8];
+
+        const numberOfEvenElements = array => {
+            let tempArray = array.filter(item => item % 2 === 0);
+            return tempArray.length;
+        }
+        
+        console.log('Original numeric array elements: ', ...numericArray);
+        console.log('Number of even elements: ', numberOfEvenElements(numericArray));
+
+    </script>
+
+</body>
+
+</html>

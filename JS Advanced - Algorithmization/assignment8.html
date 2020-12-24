@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        //Assigment #8//
+        ///Írd ki (igen vagy nem), hogy egy tetszőlegese elemszámú, bármilyen típusú elemeket tartalmazó tömb (feltételezzük, hogy beágyazott tömböt, objektumot, egyéb iterálható elemet nem tartalmaz) tartalmazza-e a 23-as számot! Használj lineáris keresést!
+
+        const mixedArray = [10, '231', 23, 235223, 'John', undefined, 122, true, null];
+
+        const contains23 = array => {
+            let contains = 'no'
+            for (let i = 0; i < array.length; i += 1) {
+                if (array[i] === 23) {
+                    contains = 'yes';
+                }
+            };
+            return contains;
+        };
+
+        console.log('Original array elements: ', ...mixedArray);
+        console.log('Contains 23: ', contains23(mixedArray));
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form>
+        <label for="integer">Please enter a finite number:</label><br>
+        <input type="text" class="integer__input" name="integer"><br>
+    </form>
+    <br>
+    <button type="button" class="submit__button">Submit</button>
+    <br>
+    <p class="result"></p>
+
+    <script>
+
+        'use strict';
+
+        // Assignment #13
+        // Adott egy tetszőleges elemszámú, csak egész számokat tartalmazó tömb. A tömb elemeit rendezzük növekvő sorrendbe. Ezután a felhasználótól kérjünk be egy számot (addig kérjünk be értéket, míg valóban egy véges egész számot ad meg). A számot szúrjuk be a tömbbe úgy, hogy a tömb továbbra is rendezett maradjon, tehát a megfelelő indexű helyre kerüljön be a plusz elem.
+        // Írasd ki a rendezett tömböt!
+
+        const numericArray = [332, 2323, 3223, 11, 45, 422, 7];
+        console.log('Original array: ', ...numericArray);
+
+        const sortItems = array => {
+            let swapped = true;
+            do {
+                swapped = false;
+                for (let i = 0; i < array.length; i += 1) {
+                    if (array[i] > array[i + 1]) {
+                        let temp = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = temp;
+                        swapped = true;
+                    }
+                }
+            } while (swapped);
+            return array;
+        }
+
+        const checkInteger = () => {
+            let userMessage = 'Input invalid. Please enter a finite integer';
+            let inputValueNumber = parseFloat(document.querySelector('.integer__input').value);
+            if (Number.isInteger(inputValueNumber) === true) {
+                userMessage = 'Input OK';
+                addtoArray(inputValueNumber);                
+                console.log('Sorted array with user input: ', ...sortedArray);
+            }
+            document.querySelector('.result').textContent = userMessage;
+        };
+
+        let sortedArray = sortItems(numericArray);
+        const button = document.querySelector('.submit__button');
+        button.addEventListener('click', checkInteger);
+
+        
+        const addtoArray = number => {
+            if (number >= sortedArray[(sortedArray.length - 1)]) {
+                sortedArray.push(number);
+            } else {
+                for (let i = 0; i < sortedArray.length; i += 1) {
+                    if ((sortedArray[i] > number) && (i != sortedArray.length)) {
+                        sortedArray.splice(i, 0, number);
+                        break;
+                    }
+                }
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

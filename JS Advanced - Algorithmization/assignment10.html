@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        //Assigment #10//
+        //Írd ki, hogy egy tetszőlegese elemszámú, bármilyen típusú elemeket tartalmazó tömb (feltételezzük, hogy beágyazott tömböt, objektumot nem tartalmaz) hányszor tartalmazza a 23-as számot!
+
+        const mixedArray = [10, 10, 23, null, 23, '2', 235223, 23, 'John', undefined, 122, true];
+
+        const contains23 = array => {
+            let instances = 0;
+            for (let i = 0; i < array.length; i += 1) {
+                if (array[i] === 23) {
+                    instances += 1;
+                }
+            }
+            return instances;
+        };
+
+        console.log('Original array elements: ', ...mixedArray);
+        console.log('Contains 23: ', contains23(mixedArray), ' times');
+
+    </script>
+
+</body>
+
+</html>

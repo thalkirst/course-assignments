@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        // Assignment #15
+        // Adott egy tetszőleges pozitív egész számokat tartalmazó tömb. Válogassuk szét külön egy even (páros), és odd (páratlan) nevezetű tömbbe a páros, és páratlan számokat! Írjuk ki a 2 tömböt!
+
+        const numericArray = [1, 13, 4, 1, 3, 321, 23, 232, 34, 13];
+
+        const arraySplitter = array => {
+
+            let numericArrayOdd = [];
+            let numericArrayEven = [];
+
+            for (let i = 0; i < array.length; i += 1) {
+                array[i] % 2 == 0 ? numericArrayEven.push(array[i]) : numericArrayOdd.push(array[i]);
+            }
+            return {odd: numericArrayOdd, even: numericArrayEven};
+        };
+
+        const {odd, even} = arraySplitter(numericArray);
+
+        console.log('Original array elements: ', ...numericArray);
+        console.log('Odd numbers: ', ...odd);
+        console.log('Even numbers: ', ...even);
+
+    </script>
+
+</body>
+
+</html>
