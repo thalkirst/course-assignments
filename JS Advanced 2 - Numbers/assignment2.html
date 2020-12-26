@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        /* 
+                2. Módosítsd úgy a függvényed, hogy paraméterként mind number, mind BigInt típusú adatokat is elfogadjon! Amennyiben valamelyik paraméter BigInt, úgy a number-eket is automatikusan konvertálja BigInt-é!
+         */
+
+        function addNumbersandBigInts(...parameters) {
+            let sum = 0;
+            let bigIntFlag = false;
+            let sumbigInt = 0n;
+            if (parameters.some(item => typeof item === 'bigint')) {
+                sumbigInt = (parameters.map(item => BigInt(item))).reduce((val, acc) => val + acc);
+                return sumbigInt;
+            }
+            for (let i = 0; i < parameters.length; i += 1) {
+                if (sum + parameters[i] <= Number.MAX_SAFE_INTEGER) {
+                    sum = sum + parameters[i];
+                } else {
+                    bigIntFlag = true;
+                    sumbigInt = sumbigInt + BigInt(parameters[i]);
+                }
+            }
+            if (bigIntFlag === false) {
+                return sum;
+            } else {
+                sumbigInt = sumbigInt + BigInt(sum);
+                return sumbigInt;
+            }
+
+        }
+
+        console.log(addNumbersandBigInts(90071991n, 1, 0, 435n));
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        ///3///
+        /* Írj egy függvényt, ami első paraméterként egy karaktert kap, a többi paraméter pedig tetszőleges számú tömb, amik stringeket tartalmaznak!
+    A függvény:
+    
+    összefűz egy tömbbe az összes elemet,
+    eltávolítja az ismétlődő elemeket,
+    eltávolítja az összes olyan stringet, ami tartalmazza az első paraméterként megadott karaktert,
+    eltávolítja a stringek végén lévő white space karaktert
+    visszaadja ezt az új tömböt. */
+
+        const char1 = 'w';
+        const arr1 = ['hi ', 'hello', 'bye '];
+        const arr2 = ['hello', 'world'];
+        const arr3 = ['goodbye   ', 'farewell'];
+
+        function mergeArrays(character, ...arrays) {
+            let newArray = arrays.flat();
+            let newArray2 = newArray.filter((item, index) => newArray.indexOf(item) === index);
+            let newArray3 = newArray2.filter(item => !item.includes(character));
+            let newArray4 = newArray3.map(line => line.trimEnd());
+            return newArray4;
+        };
+
+        console.log(mergeArrays(char1, arr1, arr2, arr3));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        /* 
+        Írj egy függvényt, aminek a visszatérési értéke az adott év 01.01. óta eltelt másodperceinek száma! */
+
+        function secondsinCurrentYear() {
+            const now = new Date();
+            const newYear = new Date('2020-01-01T00:00:00');
+            const elapsedTimeinSeconds = Math.round((now.getTime() - newYear.getTime()) / 1000);
+            return elapsedTimeinSeconds;
+        }
+
+        console.log(secondsinCurrentYear());
+
+    </script>
+</body>
+
+</html>

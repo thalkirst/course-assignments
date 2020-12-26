@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+
+        /*         Az alábbi cookie-k vannak a böngésződben tárolva (hozd létre őket):
+        
+        viewed: 5
+        uid: 354774631237
+        ssid: Bx55OWbHJ0Vt_IGIF
+        
+        Írj egy olyan objectet, az alábbi három metódust megvalósítja: - kiolvassa a sütik nevét, és értékét - átmenti őket sessionStorage-be - törli a sütiket
+         */
+
+        document.cookie = 'viewed=5; expires=Fri, 01 Jan 2021 12:00:00 UTC; path=/';
+        document.cookie = 'uid=354774631237; expires=Fri, 01 Jan 2021 12:00:00 UTC; path=/';
+        document.cookie = 'ssid=Bx55OWbHJ0Vt_IGIF; expires=Fri, 01 Jan 2021 12:00:00 UTC; path=/';
+
+        const cookieHandler = {
+
+            readCookies() {
+                let cookiesObject = {};
+                let temparray = [];
+                const keyValuePairs = (document.cookie.split('; '))
+                for (let i = 0; i < keyValuePairs.length; i++) {
+                    temparray = keyValuePairs[i].split('=');
+                    cookiesObject[temparray[0]] = temparray[1];
+                    temparray = [];
+                }
+                return cookiesObject;
+            },
+
+            saveCookies(object) {
+                for (let [key, value] of Object.entries(object)) {
+                    sessionStorage.setItem(key, value);
+                }
+            },
+
+
+            deleteCookies(object) {
+                for (let key in object) {
+                    document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                }
+            },
+
+        }
+
+        const allCookies = cookieHandler.readCookies();
+        cookieHandler.saveCookies(allCookies);
+        cookieHandler.deleteCookies(allCookies);
+
+    </script>
+
+</body>
+
+</html>

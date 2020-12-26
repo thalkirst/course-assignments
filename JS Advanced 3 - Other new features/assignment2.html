@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        /* Készíts egy HU nevű objektumot, aminek az alábbi propertijei vannak:
+    
+    date(): Visszaadja a paraméterként megadott dátumot a magyar dátumírás szabályainak megfelelően
+    currency(): Visszaadja a paraméterként megadott számot a magyar pénzformátumnak megfelelően a Ft végződéssel együtt
+    list(): A paraméterként kapott string tömböt visszaadja az alábbi formában: első, második és harmadik" (Tehát vesszőkkel elválasztva az utolsó elem előtt az és szóval) */
+
+        const HU = {
+            date: function (date) { return new Intl.DateTimeFormat('hu-HU').format(date) },
+            currency: function (number) { return (new Intl.NumberFormat('hu-HU', { style: 'currency', currency: 'HUF', minimumFractionDigits: 0 })).format(number) },
+            list: function (stringArray) {
+                let templist = stringArray.join(', ');
+                let pos = templist.lastIndexOf(',');
+                return templist.substring(0, pos) + ' és' + templist.substring(pos + 1);
+            }
+        }
+
+        const now = new Date();
+        console.log(HU.date(now));
+        console.log(HU.currency(153400));
+        console.log(HU.list(['1', '2', '3', '4', '5']));
+
+    </script>
+
+</body>
+
+</html>

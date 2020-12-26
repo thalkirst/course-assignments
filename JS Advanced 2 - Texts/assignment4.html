@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* Alakítsd át úgy az előző feladatot, hogy ne egy függvényed legyen, hanem minden egyes részfeladat legyen külön függvénybe szervezve, tehát:
+    
+    1. függvény: első paraméterként egy karaktert kap, a többi paraméter pedig tetszőleges számú tömb, amik stringeket tartalmaznak! A függvény összefűzi egy tömbbe az összes elemet és visszaadja ezt az új tömböt
+    2. függvény: egy paraméterként kapott tömbből eltávolítja az ismétlődő elemeket és visszaadja az új tömböt
+    3. függvény: egy paraméterként kapott tömb összes elem elejéről és végéről levágja a space karaktereket, visszaad egy új tömböt */
+
+        function mergeArrays(character, ...arrays) {
+            let newArray = arrays.flat();
+            return newArray;
+        };
+
+        function removeDuplicates(array) {
+            let newArray = array.filter((item, index) => array.indexOf(item) === index);
+            return newArray;
+        };
+
+        function elementEndTrimmer(array) {
+            let newArray = array.map(line => line.trimEnd());
+            return newArray;
+        };
+
+    </script>
+</body>
+
+</html>

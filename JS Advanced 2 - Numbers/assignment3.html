@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        /*
+                3. Írj egy függvényt, ami a paraméterként megadott tízes számrendszerbeli számot átkonvertálja kettes, nyolcas, és tizenhatos számrendszerbe is! Ezeket az értékeket pedig egy objectbe adja vissza! A property-k neve legyen: binary, octal, hexa.
+         */
+
+        function converter(number) {
+            return {
+                binary: number.toString(2),
+                octal: number.toString(8),
+                hexa: (number.toString(16)).toUpperCase()
+            }
+        };
+
+        console.log(converter(42351));
+
+
+    </script>
+</body>
+
+</html>

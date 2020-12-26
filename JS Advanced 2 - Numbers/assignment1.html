@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        /*         1. Írj egy függvényt, ami a paraméterként kapott tetszőleges darabszámú, tetszőlegesen méretű egész számot összead, és visszatér az összeadás végeredményével! A paraméterként kapott értékek egyszerű number típusúak legyenek! Amennyiben bármelyik paraméter értéke, vagy a részeredmény meghaladja a biztonságos tartomány, automatikusan konvertáljad BigIntbe, és így számoljunk tovább, és természetesen a visszatérési érték is BigInt legyen!    */
+
+        function addNumbers(...parameters) {
+            let sum = 0;
+            let bigIntFlag = false;
+            let sumbigInt = 0n;
+            for (let i = 0; i < parameters.length; i += 1) {
+                if (sum + parameters[i] <= Number.MAX_SAFE_INTEGER) {
+                    sum = sum + parameters[i];
+                } else {
+                    bigIntFlag = true;
+                    sumbigInt = sumbigInt + BigInt(parameters[i]);
+                }
+            }
+            if (bigIntFlag === false) {
+                return sum;
+            } else {
+                sumbigInt = sumbigInt + BigInt(sum);
+                return sumbigInt;
+            }
+
+        }
+
+        console.log(addNumbers(9007199254740991, 1, 0, 0));
+
+
+    </script>
+</body>
+
+</html>

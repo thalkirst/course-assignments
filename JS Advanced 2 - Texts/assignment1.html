@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* 1.Írj egy függvényt, ami paraméterként tetszőleges darabszámú objektumot merge-öl össze, majd visszatér ezzel az objektummal! Az összefűzést úgy hajtsa végre, hogy az új objektum property-jei egyszerű indexek legyenek (0, 1, 2, stb.) amik tartalmazzák a részobjektumokat! */
+
+        const johnDoe = {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 33
+        };
+
+        const janeDoe = {
+            firstName: 'Jane',
+            lastName: 'Doe'
+        }
+
+        const peterDoe = {
+            firstName: 'Peter',
+            lastName: 'Doe',
+            age: 21,
+            occupation: 'developer'
+        }
+
+        function mergeObjects(object1, ...objectN) {
+            let mergedObject = {
+                0: object1
+            };
+            for (let i = 0; i < objectN.length; i += 1) {
+                let j = i + 1;
+                mergedObject[j] = objectN[i];
+            }
+            return mergedObject;
+        };
+
+        console.log(mergeObjects(johnDoe, janeDoe, peterDoe));
+
+    </script>
+</body>
+
+</html>

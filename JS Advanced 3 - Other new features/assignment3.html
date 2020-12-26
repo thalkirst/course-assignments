@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        /* Készíts egy objectConverter nevű objektumot, ami az alábbi metódusokkal rendelkezik:
+        arrayToMap(array)
+        arrayToSet(array)
+        setToMap(set)
+        setToArray(set)
+        mapToArray(map)
+        mapToSet(map)
+        A fenti metódusok értelemszerűen nem másra szolgálnak, mint az egyik összetett adattípusból konvertálják át az adatokat egy másikba. Mindegyik metódus visszatérési értéke egy új Array, Map, vagy Set object. */
+
+        const objectConverter = {
+            setToArray(set) {
+                return Array.from(set);
+            },
+            mapToArray(map) {
+                let array = [];
+                for (let [key, value] of map.entries()) {
+                    array.push(key);
+                    array.push(value);
+                }
+                return array;
+            },
+            arrayToMap(array) {
+                let map = new Map();
+                for (let i = 0; i < array.length; i++) {
+                    map.set(i, array[i]);
+                }
+                return map;
+            },
+            arrayToSet(array) {
+                let set = new Set();
+                array.forEach(element => set.add(element));
+                return set;
+            },
+            setToMap(set) {
+                let array = Array.from(set);
+                let map = new Map();
+                for (let i = 0; i < array.length; i++) {
+                    map.set(i, array[i]);
+                }
+                return set;
+            },
+            mapToSet(map) {
+                let set = new Set();
+                for (let [key, value] of map.entries()) {
+                    set.add(key);
+                    set.add(value);
+                }
+                return set;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
