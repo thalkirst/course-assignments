@@ -1,0 +1,28 @@
+{
+    "users": [
+        {
+            "firstName": "Miriam",
+            "lastName": "Morelli"
+        },
+        {
+            "firstName": "Charlie",
+            "lastName": "Adam"
+        },
+        {
+            "firstName": "Michael",
+            "lastName": "Wilson"
+        },
+        {
+            "firstName": "Fred",
+            "lastName": "McDouglas"
+        },
+        {
+            "firstName": "Anita",
+            "lastName": "Stormer"
+        },
+        {
+            "firstName": "Ivica",
+            "lastName": "Kotric"
+        }
+    ]
+}

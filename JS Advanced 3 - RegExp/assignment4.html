@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Az előző három reguláris kifejezést és a validálást egy objekten belül készítsd el. Az objektnek egyen egy rules property-e ami objektmunban tárolja a mintákat, és egy validate metódusa, ami paraméterként kap egy string értéket, és azt, melyik mintát kell ráilleszteni. A visszatérési értéke egy boolean legyen, amnek az értéke attól függ, illeszkedik e a minta. -->
+
+    <script>
+        'use strict';
+
+        const Validator = {
+            rules: {
+                visa: /^4\d{3} (\d{4} ){2}\d{4}$/,
+                ip: /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/,
+                mac: /^([0-9A-Fa-f]{2}:){5}([0-9A-Fa-f]{2})$/,
+            },
+
+            validate(text, type) {
+                return text.match(this.rules[type]) ? true : false;
+            }
+        }
+
+        console.log(Validator.validate('4233 4563 7893 1111', 'visa'));
+        console.log(Validator.validate('244.1.1.1', 'ip'));
+        console.log(Validator.validate('44:3a:54:ac:3d:11', 'mac'));
+
+    </script>
+
+</body>
+
+</html>

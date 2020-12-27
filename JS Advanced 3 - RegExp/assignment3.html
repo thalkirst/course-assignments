@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- Írj reguláris kifejezést MAC cím validálására! Teszteld is a megoldásod! -->
+
+<body>
+
+    <script>
+        'use strict';
+
+        const mac = /^([0-9A-Fa-f]{2}:){5}([0-9A-Fa-f]{2})$/;
+
+        const validate = text => text.match(mac) ? true : false;
+
+        console.log(validate('44:3a:54:ac:3d:11'));
+
+    </script>
+
+</body>
+
+</html>
