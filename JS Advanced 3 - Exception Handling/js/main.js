@@ -37,7 +37,7 @@ function sleep(milliseconds) {
 const getUsers = async () => {
     let data = [];
     try {
-        const response = await fetch('./data/users1.json');
+        const response = await fetch('./data/users.json');
         if (response.status > 399) {
             alert('The application is offline');
             throw new Error('The application is offline');

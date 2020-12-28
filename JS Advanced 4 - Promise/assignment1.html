@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!--     Írj egy olyan függvényt, mely paraméterként kap egy tömböt.
+    A függvény visszatérési érték egy Promise. 
+    A Promise resolved lesz, amennyiben a tömb minden eleme string,
+    és sikeresen nagybetűssé alakíthatók. Ebben az esetben a Promise resolved lesz és visszaad
+    egy új tömböt, ami az eredeti tömb összes elemét nagybetűssé alakítva tartalmazza.
+    Ellenkező esetben a Promise rejected lesz, a visszatérési érték:
+    Error: Not all items in the array are strings!
+ -->
+    <script>
+        'use strict';
+        const stringArraytoCaps = array => {
+            return new Promise((resolve, reject) => {
+                let justStrings = array.every(item => typeof item === 'string');
+                if (justStrings === true) {
+                    let arrayCaps = array.map(item => item.toUpperCase());
+                    resolve(arrayCaps);
+                } else {
+                    reject(Error("Not all items in the array are strings"));
+                }
+            });
+        };
+
+        stringArraytoCaps(['abbba', 'THAT', 12]).then(data => {
+            console.log(data);
+        });
+        
+        stringArraytoCaps(['abba', 'THAT', 'Please type THAT']).then(data => {
+            console.log(data);
+        });
+
+
+    </script>
+
+</body>
+
+</html>

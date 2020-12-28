@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+<!--     
+Hozz létre három json filet users1, users2, és users3 névvel.
+Mindegyik fájl felhasználók nevét, és életkorát tartalmazza az alábbi formában:
+
+	{
+	    "users": [
+	        {
+	            "name": "John Doe", 
+	            "age": 30, 
+	        }
+	    ]
+	}
+Mindegyik fájlban legalább 3 felhasználói adat legyen.
+
+Írj egy függvény, ami paraméterként vár egy http metódust, és egy útvonalat. 
+Ezután xmlHttp kérést indít az adott erőforrás elérésére az adott metódussal.
+Hibakezelés s legyen megvalósítva. Ha az adott erőforrás nem elérhető,
+próbálja meg még két alkalommal, tehát összesen háromszor elérni azt.
+Két hívás között legyen 5 másodperc várakozási idő.
+Ha harmadszorra sem lehet elérni az erőforrást, elég a konzolra kiírni a hibaüzenetet.
+
+Indíts egymás után három kérést mind a 3 json file elérésére GET metódussal. 
+A kérések EGYMÁS UTÁN sorba fussanak le, tehát ha az első file tartalma elérhető már (lefutott a callback) 
+akkor indítsd a második kérést, és így tovább. A 3 json file tartalmát egyetlen JavaScript objektumba
+merge-öld össze. Ha bármelyik file nem volt elérhető, akkor csak az adott file tartalma ne szerepeljen
+az objektumban, a többié még igen.
+Nem szabad callback hell-nek lennie! -->
+
+    <script>
+        'use strict';
+
+        function send(address, data) {
+
+var retries = 5;
+
+function makeReq() {
+
+
+    if(address == null)
+        throw "Error: File not defined."
+
+    var req = (window.XMLHttpRequest)?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+
+    if(req == null)
+        throw "Error: XMLHttpRequest failed to initiate.";
+
+    req.onload = function() {
+        //Everything's peachy
+        console.log("Success!");
+    }
+    req.onerror = function() {
+        retries--;
+        if(retries > 0) {
+            console.log("Retrying...");
+            setTimeout(function(){makeReq()}, 1000);
+        } else {
+            //I tried and I tried, but it just wouldn't work!
+            console.log("No go Joe");
+        }
+    }
+
+    try {
+        req.open("POST", address, true);
+        req.send(data); //Send whatever here
+
+    } catch(e) {
+        throw "Error retrieving data file. Some browsers only accept cross-domain request with HTTP.";
+    }
+
+
+}
+makeReq();
+
+}
+
+
+send("somefile.php", "data");
+
+
+        let users = [];
+        let retries = 3;
+
+        function callback(response) {
+            const result = JSON.parse(response.responseText);
+            let temparray = users.concat(result.users);
+            users = temparray;
+
+        }
+        
+        function request(method, url) {
+
+            const xhr = new XMLHttpRequest();
+            xhr.onerror = function() {
+            retries--;
+            if(retries > 0) {
+                console.log("Retrying...");
+                setTimeout(function(){makeReq()}, 1000);
+            } else {
+                //I tried and I tried, but it just wouldn't work!
+                console.log("No go Joe");
+            }
+        }
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    callback(xhr);
+                }
+            }
+            xhr.open(method, url, false);
+            xhr.send();
+        }
+
+       request('GET', './data/users1.json');
+       request('GET', './data/users2.json');
+       request('GET', './data/users3.json');
+
+       console.log(users);
+
+    </script>
+</body>
+
+</html>
