@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<!-- 
+    Írj egy generátor függvényt, amit egyedi indexek generálására használsz!
+    A index értéke kezdetben 1 legyen, és egyesével léptesd! -->
+
+    <script>
+        'use strict';
+
+        function* indexGenerator() {
+            let index = 1;
+            while (true) {
+                yield index += 1;
+            }
+        }   
+
+        const index = indexGenerator();
+        console.log('new index :', index.next().value);
+        console.log('new index :', index.next().value);
+
+    </script>
+</body>
+
+</html>

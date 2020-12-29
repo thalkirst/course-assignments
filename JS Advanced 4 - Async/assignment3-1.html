@@ -9,33 +9,10 @@
 
 <body>
 
-    <!--     
-Hozz létre három json filet users1, users2, és users3 névvel.
-Mindegyik fájl felhasználók nevét, és életkorát tartalmazza az alábbi formában:
-
-	{
-	    "users": [
-	        {
-	            "name": "John Doe", 
-	            "age": 30, 
-	        }
-	    ]
-	}
-Mindegyik fájlban legalább 3 felhasználói adat legyen.
-
-Írj egy függvény, ami paraméterként vár egy http metódust, és egy útvonalat. 
-Ezután xmlHttp kérést indít az adott erőforrás elérésére az adott metódussal.
-Hibakezelés s legyen megvalósítva. Ha az adott erőforrás nem elérhető,
-próbálja meg még két alkalommal, tehát összesen háromszor elérni azt.
-Két hívás között legyen 5 másodperc várakozási idő.
-Ha harmadszorra sem lehet elérni az erőforrást, elég a konzolra kiírni a hibaüzenetet.
-
-Indíts egymás után három kérést mind a 3 json file elérésére GET metódussal. 
-A kérések EGYMÁS UTÁN sorba fussanak le, tehát ha az első file tartalma elérhető már (lefutott a callback) 
-akkor indítsd a második kérést, és így tovább. A 3 json file tartalmát egyetlen JavaScript objektumba
-merge-öld össze. Ha bármelyik file nem volt elérhető, akkor csak az adott file tartalma ne szerepeljen
-az objektumban, a többié még igen.
-Nem szabad callback hell-nek lennie! -->
+<!--     Nézz utána, hogyan lehetne megmérni, hogy az első, és a második esetben mennyi a program lefutásának
+    az ideje! Logold ki konzolra táblázatos formában (Egy console metódus lesz ez is, nézz utána),
+    mennyi lesz a futásai idő, az első és a második megoldás esetében, ha a programot egyszer, tízszer, százszor,
+    és ezerszer futtatod le. (A későbbiekben még lesz erről szó) -->
 
     <script>
         'use strict';
@@ -50,13 +27,14 @@ Nem szabad callback hell-nek lennie! -->
 
         function nextRequest(url) {
             if (url === './data/users1.json') {
-               sendRequest('GET', './data/users2.json');
+                sendRequest('GET', './data/users2.json');
             }
             if (url === './data/users2.json') {
-               sendRequest('GET', './data/users3.json');
+                sendRequest('GET', './data/users3.json');
             }
             if (url === './data/users3.json') {
-               console.log(userArray);
+                const t1 = performance.now();
+                console.log(`The operation took ${t1 - t0} milliseconds`);
             }
         }
 
@@ -85,10 +63,10 @@ Nem szabad callback hell-nek lennie! -->
             makeReq();
         }
 
+        console.log('-----1------')
+        const t0 = performance.now();
         sendRequest('GET', './data/users1.json');
-      
-
-      
+    
 
     </script>
 </body>

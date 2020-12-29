@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+<!--     Nézz utána, hogyan lehetne megmérni, hogy az első, és a második esetben mennyi a program lefutásának
+    az ideje! Logold ki konzolra táblázatos formában (Egy console metódus lesz ez is, nézz utána),
+    mennyi lesz a futásai idő, az első és a második megoldás esetében, ha a programot egyszer, tízszer, százszor,
+    és ezerszer futtatod le. (A későbbiekben még lesz erről szó) -->
+
+    <script>
+        'use strict';
+
+        let userArray = [];
+
+        function callback(response, url) {
+            const result = JSON.parse(response.responseText);
+            userArray = [...userArray, result.users].flat();
+            giveResult(url);
+        }
+
+        function giveResult(url) {
+            if (url === './data/users3.json') {
+                const t1 = performance.now();
+                console.log(`The operation took ${t1 - t0} milliseconds`);
+            }
+        }
+
+        function sendRequest(method, url) {
+            let retries = 3;
+            function makeReq() {
+                const req = new XMLHttpRequest();
+                req.onreadystatechange = () => {
+                    if (req.readyState === 4 && req.status === 200) {
+                        callback(req, url);
+                    }
+                    if (req.readyState === 4 && req.status === 404) {
+                        retries--;
+                        if (retries > 0) {
+                            console.log("Retrying...");
+                            setTimeout(function () { makeReq() }, 5000);
+                        } else {
+                            console.log("URL is unavailable");
+                            giveResult(url);
+                        }
+                    }
+                }
+                req.open(method, url, true);
+                req.send();
+            }
+            makeReq();
+        }
+
+        console.log('-----1------')
+        const t0 = performance.now();
+        sendRequest('GET', './data/users1.json');
+        sendRequest('GET', './data/users2.json');
+        sendRequest('GET', './data/users3.json');
+      
+
+    </script>
+</body>
+
+</html>

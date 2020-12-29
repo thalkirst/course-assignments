@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- A 14-es Async programming modul feladatait ültesd át fetch, generator function-ös megoldásra. -->
+
+    <script>
+        'use strict';
+        const urls = ['./data/users1.json', './data/users2.json', './data/users3.json']
+        let userArray = [];
+
+        function writeArray(user) {
+            userArray = [...userArray, user.users].flat()
+            console.log(userArray);
+        };
+
+        function responseHandler(gen) {
+            const result = gen.next();
+            const {
+                done,
+                value
+            } = result;
+            if (!done) {
+                value
+                    .then((data) => data.json())
+                    .then((user) => {
+                        writeArray(user);
+                    })
+                    .catch((error) => console.error(error))
+                responseHandler(gen);
+            }
+        }
+
+        function* main() {
+            for (const url of urls) {
+             yield fetch(url);
+            }
+        }
+
+        const myGenerator = main();
+        responseHandler(myGenerator);
+
+    </script>
+
+</body>
+
+</html>

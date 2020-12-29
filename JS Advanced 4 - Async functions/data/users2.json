@@ -1,0 +1,16 @@
+{
+    "users": [
+        {
+            "name": "Fred McDouglas",
+            "age": 23
+        },
+        {
+            "name": "Anita Stormer",
+            "age": 78
+        },
+        {
+            "name": "Ivica Kotric",
+            "age": 19
+        }
+    ]
+}

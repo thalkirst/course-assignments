@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- Írj egy generátor függvényt, ami a 2 hatványait adja vissza! -->
+
+    <script>
+        'use strict';
+
+        function* exponentiation(value) {
+            let power = 1
+            while (true) {
+                power++
+                yield value**power;
+            }
+        }   
+
+        const power = exponentiation(2);
+        console.log('next power :', power.next().value);
+        console.log('next power :', power.next().value);
+        console.log('next power :', power.next().value);
+        console.log('next power :', power.next().value);
+
+    </script>
+</body>
+</html>

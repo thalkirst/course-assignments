@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--     Írj egy delay nevű aszinkron függvényt, ami paraméterként kap egy számot,
+    és egy callback functiont. Az paraméternek megfelelő milliszekundum után
+    lefuttatja a második paraméterként kapott callbacket! -->
+
+    <script>
+        'use strict';
+
+        async function delayer(number, callback) {
+            await new Promise(resolve => {
+                setTimeout(resolve, number)
+            })
+            callback();
+        }
+
+        const logger = text => console.log('I waited 5 seconds for this');
+
+        delayer(5000, logger);
+
+    </script>
+
+</body>
+
+</html>

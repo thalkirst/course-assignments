@@ -1,0 +1,16 @@
+{
+    "users": [
+        {
+            "name": "Peter Chorley",
+            "age": 45
+        },
+        {
+            "name": "Monica Fraser",
+            "age": 35
+        },
+        {
+            "name": "Eva Wilson",
+            "age": 23
+        }
+    ]
+}

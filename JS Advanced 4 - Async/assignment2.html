@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+<!--     Készíts egy új verziót az előbbi feladatból.
+    A különbség most csupán annyi, hogy a kérések nem egymás után,
+    hanem egyszerre (“párhuzamosan”) legyenek elküldve. -->
+
+    <script>
+        'use strict';
+
+        let userArray = [];
+
+        function callback(response, url) {
+            const result = JSON.parse(response.responseText);
+            userArray = [...userArray, result.users].flat();
+            giveResult(url);
+        }
+
+        function giveResult(url) {
+            if (url === './data/users3.json') {
+               console.log(userArray);
+            }
+        }
+
+        function sendRequest(method, url) {
+            let retries = 3;
+            function makeReq() {
+                const req = new XMLHttpRequest();
+                req.onreadystatechange = () => {
+                    if (req.readyState === 4 && req.status === 200) {
+                        callback(req, url);
+                    }
+                    if (req.readyState === 4 && req.status === 404) {
+                        retries--;
+                        if (retries > 0) {
+                            console.log("Retrying...");
+                            setTimeout(function () { makeReq() }, 5000);
+                        } else {
+                            console.log("URL is unavailable");
+                            giveResult(url);
+                        }
+                    }
+                }
+                req.open(method, url, true);
+                req.send();
+            }
+            makeReq();
+        }
+
+        sendRequest('GET', './data/users1.json');
+        sendRequest('GET', './data/users2.json');
+        sendRequest('GET', './data/users3.json');
+      
+
+    </script>
+</body>
+
+</html>

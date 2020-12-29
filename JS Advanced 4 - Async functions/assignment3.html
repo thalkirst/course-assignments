@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Írj egy olyan async függvényt, ami paraméterként promiseokat (akármennyi lehet, számuk nem ismert)
+    kap. A visszatérési érték egy Promise legyen, abban az esetben, ha mindegyik Promise fullfilled lett,
+    egyébként egy Error object, az üzenet pedig: “Promise Error in functionName”.
+    A functionName a függvény neve. -->
+
+    <script>
+
+        let proA = new Promise((res, rej) => {
+            setTimeout(() => {
+                res("First Success");
+            }, 2000);
+        });
+
+        let proB = new Promise((res, rej) => {
+            setTimeout(() => {
+                res("Second Success");
+            }, 2600);
+        });
+
+        let proC = new Promise((res, rej) => {
+            setTimeout(() => {
+                rej("Third Error");
+            }, 4000);
+        });
+
+        async function checkPromises(...promises) {
+
+        }
+
+        checkPromises(proA, proB, proC);
+
+
+    </script>
+
+</body>
+
+</html>
