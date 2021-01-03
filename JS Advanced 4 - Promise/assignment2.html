@@ -32,21 +32,22 @@ Error: Something went wrong with sorting words.
                         resolve(sortedArray);
                     }
                     catch (e) {
-                        reject(Error("Something went wrong with sorting words."));
+                        reject(new Error("Something went wrong with sorting words."));
                     }
                 } else {
-                    reject(Error("Not all items in the array are strings"));
+                    reject(new Error("Not all items in the array are strings"));
                 }
             });
         };
 
-        sortStringArray(['abba', '1', 'THAT', 'b', 'that', 'peter']).then(data => {
-            console.log(data);
-        });
+        sortStringArray(['abba', '1', 'THAT', 'b', 'that', 'peter']).then(
+            (data) => console.log(data))
+            .catch((error) => console.error(error))
 
-        sortStringArray(['abba', 1, 'THAT', 'b', 'that', 'peter']).then(data => {
-            console.log(data);
-        });
+        sortStringArray(['abba', 1, 'THAT', 'b', 'that', 'peter']).then(
+            (data) => console.log(data))
+            .catch((error) => console.error(error))
+        
 
 
     </script>

@@ -42,7 +42,7 @@
                         retries--;
                         if (retries > 0) {
                             console.log("Retrying...");
-                            setTimeout(function () { makeReq() }, 5000);
+                            setTimeout( () => makeReq(), 5000);
                         } else {
                             console.log("URL is unavailable");
                             giveResult(url);

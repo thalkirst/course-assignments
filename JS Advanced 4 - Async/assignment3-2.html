@@ -9,7 +9,7 @@
 
 <body>
 
-<!--     Nézz utána, hogyan lehetne megmérni, hogy az első, és a második esetben mennyi a program lefutásának
+    <!--     Nézz utána, hogyan lehetne megmérni, hogy az első, és a második esetben mennyi a program lefutásának
     az ideje! Logold ki konzolra táblázatos formában (Egy console metódus lesz ez is, nézz utána),
     mennyi lesz a futásai idő, az első és a második megoldás esetében, ha a programot egyszer, tízszer, százszor,
     és ezerszer futtatod le. (A későbbiekben még lesz erről szó) -->
@@ -18,18 +18,11 @@
         'use strict';
 
         let userArray = [];
+        let instances = 0;
 
         function callback(response, url) {
             const result = JSON.parse(response.responseText);
             userArray = [...userArray, result.users].flat();
-            giveResult(url);
-        }
-
-        function giveResult(url) {
-            if (url === './data/users3.json') {
-                const t1 = performance.now();
-                console.log(`The operation took ${t1 - t0} milliseconds`);
-            }
         }
 
         function sendRequest(method, url) {
@@ -44,10 +37,9 @@
                         retries--;
                         if (retries > 0) {
                             console.log("Retrying...");
-                            setTimeout(function () { makeReq() }, 5000);
+                            setTimeout( () => makeReq(), 5000);
                         } else {
                             console.log("URL is unavailable");
-                            giveResult(url);
                         }
                     }
                 }
@@ -57,12 +49,34 @@
             makeReq();
         }
 
-        console.log('-----1------')
         const t0 = performance.now();
-        sendRequest('GET', './data/users1.json');
-        sendRequest('GET', './data/users2.json');
-        sendRequest('GET', './data/users3.json');
-      
+        function caller() {
+            while (instances < 1000) {
+                instances++
+                if (instances === 1) {
+                    const t1 = performance.now();
+                    console.log(`1 times: the operation took ${t1 - t0} milliseconds`);
+                }
+                if (instances === 10) {
+                    const t1 = performance.now();
+                    console.log(`10 times: the operation took ${t1 - t0} milliseconds`);
+                }
+                if (instances === 100) {
+                    const t1 = performance.now();
+                    console.log(`100 times: the operation took ${t1 - t0} milliseconds`);
+                }
+                if (instances === 1000) {
+                    const t1 = performance.now();
+                    console.log(`1000 times: the operation took ${t1 - t0} milliseconds`);
+                }
+                sendRequest('GET', './data/users1.json');
+                sendRequest('GET', './data/users2.json');
+                sendRequest('GET', './data/users3.json');
+            }
+        }
+
+        caller();
+
 
     </script>
 </body>

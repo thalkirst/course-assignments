@@ -12,39 +12,61 @@
 
     <script>
         'use strict';
-        const urls = ['./data/users1.json', './data/users2.json', './data/users3.json']
+        const urls = ['./data/users1.json', './data/users12.json', './data/users3.json'];
+        const urlNumber = urls.length;
+        let counter = 0;
         let userArray = [];
 
+
         function writeArray(user) {
-            userArray = [...userArray, user.users].flat()
-            console.log(userArray);
+            user.json().then((user) => {
+                userArray = [...userArray, user.users].flat();
+                counter++;
+                if (counter === urlNumber) {
+                    console.log(userArray);
+                } else {
+                    fetchwithGenerator(urlGenerator);
+                }
+            }
+            );
         };
 
-        function responseHandler(gen) {
-            const result = gen.next();
-            const {
-                done,
-                value
-            } = result;
-            if (!done) {
-                value
-                    .then((data) => data.json())
-                    .then((user) => {
-                        writeArray(user);
+        function fetchwithGenerator(gen) {
+            let retries = 3;
+            const url = gen.next().value;
+
+            function fetchPlus(url) {
+                fetch(url)
+                    .then(res => {
+                        if (res.ok) {
+                            writeArray(res);
+                        }
+                        else {
+                            retries--;
+                            if (retries > 0) {
+                                console.log('Retrying');
+                                setTimeout(() => fetchPlus(url), 5000);
+                            }
+                            else {
+                                counter++;
+                                console.log('Request failed');
+                                fetchwithGenerator(urlGenerator);
+                            }
+                        }
                     })
-                    .catch((error) => console.error(error))
-                responseHandler(gen);
+                    .catch(error => console.error(error.message))
             }
+            fetchPlus(url)
         }
 
         function* main() {
             for (const url of urls) {
-             yield fetch(url);
+                yield url;
             }
         }
 
-        const myGenerator = main();
-        responseHandler(myGenerator);
+        const urlGenerator = main();
+        fetchwithGenerator(urlGenerator);
 
     </script>
 

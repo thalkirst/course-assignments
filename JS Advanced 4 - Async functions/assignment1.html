@@ -20,22 +20,21 @@ function request(method, url){
     <script>
 
         function makeRequest(url) {
-            fetch(url).then(function (response) {
+            fetch(url).then(response => {
                 if (response.ok) {
                     return response;
                 }
-                throw Error(response.statusText);
             }).then(function (response) {
                 return response.json();
             }).then(function (json) {
-                console.log('Request succeeded with JSON response:', json);
+                console.log('Request success');
             }).catch(function (error) {
-                console.log('Request failed:', error.message);
+                console.error('Request error');
             });
         }
 
-        makeRequest ('./data/users1.json');
-        makeRequest ('./data/users12.json');
+        makeRequest('./data/users1.json');
+        makeRequest('./data/users21.json');
 
     </script>
 

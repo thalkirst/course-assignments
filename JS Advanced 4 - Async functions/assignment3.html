@@ -19,26 +19,42 @@
         let proA = new Promise((res, rej) => {
             setTimeout(() => {
                 res("First Success");
-            }, 2000);
+            }, 1000);
         });
 
         let proB = new Promise((res, rej) => {
             setTimeout(() => {
-                res("Second Success");
-            }, 2600);
+                res("Second Error");
+            }, 2000);
         });
 
         let proC = new Promise((res, rej) => {
             setTimeout(() => {
                 rej("Third Error");
-            }, 4000);
+            }, 3000);
         });
 
         async function checkPromises(...promises) {
-
+            const result = await Promise.allSettled(promises);
+            let fulfilled = [];
+            let rejected = [];
+            for (let i=0; i<result.length; i++) {
+                if (result[i].status === 'fulfilled') {
+                    fulfilled.push(result[i].status);
+                }
+                if (result[i].status === 'rejected') {
+                    rejected.push(i+1);
+                }
+            }
+            if (fulfilled.length === promises.length) {
+                return 'All promises were fulfilled';
+            } else {
+                return new Error (`Promise error in the following promise(s): ${rejected}`);
+            }
+            
         }
 
-        checkPromises(proA, proB, proC);
+        checkPromises(proA, proB, proC).then(console.log);
 
 
     </script>

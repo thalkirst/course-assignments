@@ -26,18 +26,19 @@
                     let arrayCaps = array.map(item => item.toUpperCase());
                     resolve(arrayCaps);
                 } else {
-                    reject(Error("Not all items in the array are strings"));
+                    reject(new Error("Not all items in the array are strings"));
                 }
             });
         };
 
-        stringArraytoCaps(['abbba', 'THAT', 12]).then(data => {
-            console.log(data);
-        });
+        stringArraytoCaps(['abbba', 'THAT', 12]).then(
+            (data) => console.log(data))
+            .catch((error) => console.error(error))
         
-        stringArraytoCaps(['abba', 'THAT', 'Please type THAT']).then(data => {
-            console.log(data);
-        });
+        
+        stringArraytoCaps(['abba', 'THAT', 'Please type THAT']).then(
+            (data) => console.log(data))
+            .catch((error) => console.error(error))
 
 
     </script>

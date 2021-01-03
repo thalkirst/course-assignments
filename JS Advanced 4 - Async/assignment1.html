@@ -72,7 +72,7 @@ Nem szabad callback hell-nek lennie! -->
                         retries--;
                         if (retries > 0) {
                             console.log("Retrying...");
-                            setTimeout(function () { makeReq() }, 5000);
+                            setTimeout( () => makeReq(), 5000);
                         } else {
                             console.log("URL is unavailable");
                             nextRequest(url);
@@ -86,9 +86,6 @@ Nem szabad callback hell-nek lennie! -->
         }
 
         sendRequest('GET', './data/users1.json');
-      
-
-      
 
     </script>
 </body>
