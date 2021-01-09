@@ -1,0 +1,14 @@
+.initial {
+    font-size: 5rem;
+    background-color: blueviolet;
+    color: white;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 10%;
+    padding-bottom: 10px;
+}
