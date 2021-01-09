@@ -1,73 +1,267 @@
 const usStates = [
-    { name: 'ALABAMA', abbreviation: 'AL'},
-    { name: 'ALASKA', abbreviation: 'AK'},
-    { name: 'AMERICAN SAMOA', abbreviation: 'AS'},
-    { name: 'ARIZONA', abbreviation: 'AZ'},
-    { name: 'ARKANSAS', abbreviation: 'AR'},
-    { name: 'CALIFORNIA', abbreviation: 'CA'},
-    { name: 'COLORADO', abbreviation: 'CO'},
-    { name: 'CONNECTICUT', abbreviation: 'CT'},
-    { name: 'DELAWARE', abbreviation: 'DE'},
-    { name: 'DISTRICT OF COLUMBIA', abbreviation: 'DC'},
-    { name: 'FEDERATED STATES OF MICRONESIA', abbreviation: 'FM'},
-    { name: 'FLORIDA', abbreviation: 'FL'},
-    { name: 'GEORGIA', abbreviation: 'GA'},
-    { name: 'GUAM', abbreviation: 'GU'},
-    { name: 'HAWAII', abbreviation: 'HI'},
-    { name: 'IDAHO', abbreviation: 'ID'},
-    { name: 'ILLINOIS', abbreviation: 'IL'},
-    { name: 'INDIANA', abbreviation: 'IN'},
-    { name: 'IOWA', abbreviation: 'IA'},
-    { name: 'KANSAS', abbreviation: 'KS'},
-    { name: 'KENTUCKY', abbreviation: 'KY'},
-    { name: 'LOUISIANA', abbreviation: 'LA'},
-    { name: 'MAINE', abbreviation: 'ME'},
-    { name: 'MARSHALL ISLANDS', abbreviation: 'MH'},
-    { name: 'MARYLAND', abbreviation: 'MD'},
-    { name: 'MASSACHUSETTS', abbreviation: 'MA'},
-    { name: 'MICHIGAN', abbreviation: 'MI'},
-    { name: 'MINNESOTA', abbreviation: 'MN'},
-    { name: 'MISSISSIPPI', abbreviation: 'MS'},
-    { name: 'MISSOURI', abbreviation: 'MO'},
-    { name: 'MONTANA', abbreviation: 'MT'},
-    { name: 'NEBRASKA', abbreviation: 'NE'},
-    { name: 'NEVADA', abbreviation: 'NV'},
-    { name: 'NEW HAMPSHIRE', abbreviation: 'NH'},
-    { name: 'NEW JERSEY', abbreviation: 'NJ'},
-    { name: 'NEW MEXICO', abbreviation: 'NM'},
-    { name: 'NEW YORK', abbreviation: 'NY'},
-    { name: 'NORTH CAROLINA', abbreviation: 'NC'},
-    { name: 'NORTH DAKOTA', abbreviation: 'ND'},
-    { name: 'NORTHERN MARIANA ISLANDS', abbreviation: 'MP'},
-    { name: 'OHIO', abbreviation: 'OH'},
-    { name: 'OKLAHOMA', abbreviation: 'OK'},
-    { name: 'OREGON', abbreviation: 'OR'},
-    { name: 'PALAU', abbreviation: 'PW'},
-    { name: 'PENNSYLVANIA', abbreviation: 'PA'},
-    { name: 'PUERTO RICO', abbreviation: 'PR'},
-    { name: 'RHODE ISLAND', abbreviation: 'RI'},
-    { name: 'SOUTH CAROLINA', abbreviation: 'SC'},
-    { name: 'SOUTH DAKOTA', abbreviation: 'SD'},
-    { name: 'TENNESSEE', abbreviation: 'TN'},
-    { name: 'TEXAS', abbreviation: 'TX'},
-    { name: 'UTAH', abbreviation: 'UT'},
-    { name: 'VERMONT', abbreviation: 'VT'},
-    { name: 'VIRGIN ISLANDS', abbreviation: 'VI'},
-    { name: 'VIRGINIA', abbreviation: 'VA'},
-    { name: 'WASHINGTON', abbreviation: 'WA'},
-    { name: 'WEST VIRGINIA', abbreviation: 'WV'},
-    { name: 'WISCONSIN', abbreviation: 'WI'},
-    { name: 'WYOMING', abbreviation: 'WY' }
-];
+    {
+        "name": "Alabama",
+        "abbreviation": "AL"
+    },
+    {
+        "name": "Alaska",
+        "abbreviation": "AK"
+    },
+    {
+        "name": "American Samoa",
+        "abbreviation": "AS"
+    },
+    {
+        "name": "Arizona",
+        "abbreviation": "AZ"
+    },
+    {
+        "name": "Arkansas",
+        "abbreviation": "AR"
+    },
+    {
+        "name": "California",
+        "abbreviation": "CA"
+    },
+    {
+        "name": "Colorado",
+        "abbreviation": "CO"
+    },
+    {
+        "name": "Connecticut",
+        "abbreviation": "CT"
+    },
+    {
+        "name": "Delaware",
+        "abbreviation": "DE"
+    },
+    {
+        "name": "District of Columbia",
+        "abbreviation": "DC"
+    },
+    {
+        "name": "Federated States of Micronesia",
+        "abbreviation": "FM"
+    },
+    {
+        "name": "Florida",
+        "abbreviation": "FL"
+    },
+    {
+        "name": "Georgia",
+        "abbreviation": "GA"
+    },
+    {
+        "name": "Guam",
+        "abbreviation": "GU"
+    },
+    {
+        "name": "Hawaii",
+        "abbreviation": "HI"
+    },
+    {
+        "name": "Idaho",
+        "abbreviation": "ID"
+    },
+    {
+        "name": "Illinois",
+        "abbreviation": "IL"
+    },
+    {
+        "name": "Indiana",
+        "abbreviation": "IN"
+    },
+    {
+        "name": "Iowa",
+        "abbreviation": "IA"
+    },
+    {
+        "name": "Kansas",
+        "abbreviation": "KS"
+    },
+    {
+        "name": "Kentucky",
+        "abbreviation": "KY"
+    },
+    {
+        "name": "Louisiana",
+        "abbreviation": "LA"
+    },
+    {
+        "name": "Maine",
+        "abbreviation": "ME"
+    },
+    {
+        "name": "Marshall Islands",
+        "abbreviation": "MH"
+    },
+    {
+        "name": "Maryland",
+        "abbreviation": "MD"
+    },
+    {
+        "name": "Massachusetts",
+        "abbreviation": "MA"
+    },
+    {
+        "name": "Michigan",
+        "abbreviation": "MI"
+    },
+    {
+        "name": "Minnesota",
+        "abbreviation": "MN"
+    },
+    {
+        "name": "Mississippi",
+        "abbreviation": "MS"
+    },
+    {
+        "name": "Missouri",
+        "abbreviation": "MO"
+    },
+    {
+        "name": "Montana",
+        "abbreviation": "MT"
+    },
+    {
+        "name": "Nebraska",
+        "abbreviation": "NE"
+    },
+    {
+        "name": "Nevada",
+        "abbreviation": "NV"
+    },
+    {
+        "name": "New Hampshire",
+        "abbreviation": "NH"
+    },
+    {
+        "name": "New Jersey",
+        "abbreviation": "NJ"
+    },
+    {
+        "name": "New Mexico",
+        "abbreviation": "NM"
+    },
+    {
+        "name": "New York",
+        "abbreviation": "NY"
+    },
+    {
+        "name": "North Carolina",
+        "abbreviation": "NC"
+    },
+    {
+        "name": "North Dakota",
+        "abbreviation": "ND"
+    },
+    {
+        "name": "Northern Mariana Islands",
+        "abbreviation": "MP"
+    },
+    {
+        "name": "Ohio",
+        "abbreviation": "OH"
+    },
+    {
+        "name": "Oklahoma",
+        "abbreviation": "OK"
+    },
+    {
+        "name": "Oregon",
+        "abbreviation": "OR"
+    },
+    {
+        "name": "Palau",
+        "abbreviation": "PW"
+    },
+    {
+        "name": "Pennsylvania",
+        "abbreviation": "PA"
+    },
+    {
+        "name": "Puerto Rico",
+        "abbreviation": "PR"
+    },
+    {
+        "name": "Rhode Island",
+        "abbreviation": "RI"
+    },
+    {
+        "name": "South Carolina",
+        "abbreviation": "SC"
+    },
+    {
+        "name": "South Dakota",
+        "abbreviation": "SD"
+    },
+    {
+        "name": "Tennessee",
+        "abbreviation": "TN"
+    },
+    {
+        "name": "Texas",
+        "abbreviation": "TX"
+    },
+    {
+        "name": "Utah",
+        "abbreviation": "UT"
+    },
+    {
+        "name": "Vermont",
+        "abbreviation": "VT"
+    },
+    {
+        "name": "Virgin Islands",
+        "abbreviation": "VI"
+    },
+    {
+        "name": "Virginia",
+        "abbreviation": "VA"
+    },
+    {
+        "name": "Washington",
+        "abbreviation": "WA"
+    },
+    {
+        "name": "West Virginia",
+        "abbreviation": "WV"
+    },
+    {
+        "name": "Wisconsin",
+        "abbreviation": "WI"
+    },
+    {
+        "name": "Wyoming",
+        "abbreviation": "WY"
+    }
+]
+
+const hunCounties = ['Baranya', 'Bács-Kiskun', 'Békés', 'Borsod-Abaúj-Zemplén', 'Budapest', 'Csongrád-Csanád', 'Fejér', 'Győr-Moson-Sopron', 'Hajdú-Bihar', 'Heves', 'Jász-Nagykun-Szolnok', 'Komárom-Esztergom', 'Nógrád', 'Pest', 'Somogy', 'Szabolcs-Szatmár-Bereg', 'Tolna', 'Vas', 'Veszprém', 'Zala'];
 
 const listStates = () => {
-    if (countryField.value === "United States") {
-
+    let stateSelect = document.querySelector('#state');
+    while (stateSelect.hasChildNodes()) {
+        stateSelect.removeChild(stateSelect.lastChild);
     }
 
+    if (countryField.value === 'United States') {
+        for (let i = 0; i < usStates.length; i++) {
+            let option = document.createElement('option');
+            option.textContent = usStates[i].name;
+            stateSelect.appendChild(option);
+        }
+    }
+    if (countryField.value === 'Hungary') {
+        for (let i = 0; i < hunCounties.length; i++) {
+            let option = document.createElement('option');
+            option.textContent = hunCounties[i];
+            stateSelect.appendChild(option);
+        }
+    }
 }
 
-const countryField = document.querySelector("#country");
-countryField.addEventListener("change", listStates);
+const countryField = document.querySelector('#country');
+countryField.addEventListener('change', listStates);
 
 

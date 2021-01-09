@@ -53,7 +53,7 @@
         <div class="container">
           <h1 class="mb-5 text-center">Kapcsolat</h1>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 mb-5 mb-md-0">
               <form>
                 <div class="form-group">
                   <label for="email" class="font-weight-bold">E-mail-cím</label>
@@ -81,13 +81,16 @@
                   <input type="checkbox" name="newsletter" id="newsletter" class="form-check-input" checked>
                   <label for="newsletter" class="font-weight-bold">Feliratkozom a hírlevélre</label>
                 </div>
-                <button type="button" class="btn btn-primary btn-lg">Küldés</button>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sendModal">Küldés</button>
               </form>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d9313.670303981551!2d18.225636710567024!3d46.05168170999857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e0!4m0!4m5!1s0x4742b3d42ef9701f%3A0xd64ae95ba6b7a49c!2zRXJkw6lseSB1LiAxOSwgUMOpY3MsIDc2MzI!3m2!1d46.053252!2d18.22523!5e0!3m2!1shu!2shu!4v1610221859313!5m2!1shu!2shu" class="embed-responsive" height="450" frameborder="0" aria-hidden="false" tabindex="0"></iframe>
+            </div>
           </div>
         </div>
       </section>
+      
     </main>
 
     <footer class="py-4 text-white text-center text-md-left bg-dark mt-auto">
@@ -137,8 +140,26 @@
             </div>
           </div>
         </div>
-    
       </footer>
+
+      <div class="modal fade" id="sendModal" tabindex="-1" aria-labelledby="sendModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="sendModalLabel">Üzenet</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Bezárás">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Az üzenetet sikeresen elküldtük. 24 órán belül válaszolunk a megadott e-mail-címre.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">Bezárás</button>
+            </div>
+          </div>
+        </div>
+      </div>
     
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
