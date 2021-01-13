@@ -1,11 +1,8 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-  }
-  
-  .nav {
-    background-color: #fff;
-    box-shadow: 0 0 10px #aaa;
+@use 'modules/modules' as c;
+
+.nav {
+    background-color: c.$nav-background-color;
+    box-shadow: 0 0 10px c.$nav-shadow-color;
     display: flex;
     justify-content: center;
 
@@ -40,14 +37,15 @@ body {
     }
     
     &__link {
-        color: #222;
+        color: c.$link-color;
         display: block;
         line-height: 1rem;
         padding: 1rem;
         text-decoration: none;
 
         &:hover {
-            background: #efefef;
+            background: c.$link-hover-background-color;
+            color: c.$link-hover-color;
         }
     }
 
@@ -76,14 +74,13 @@ body {
         }
 
         &-line {
-            background: #222;
+            background: c.$link-color;
             display: block;
             height: 2px;
             width: 1.5rem;
         }
       }
     }      
-  
    
   
 

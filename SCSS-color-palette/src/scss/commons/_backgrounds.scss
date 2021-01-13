@@ -1,0 +1,4 @@
+@use "../variables/colors";
+@use "../mixins/backgrounds";
+
+@include backgrounds.generate-colored-backgrounds(colors.$color-palette);
